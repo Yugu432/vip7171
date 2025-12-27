@@ -1,0 +1,370 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Microsoft YaHei', Arial, sans-serif;
+  background-color: #0a0a0f;
+  color: #fff;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Background image wall */
+#bg-image-wall {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%230a0a0f"/><circle cx="25" cy="25" r="5" fill="%231a1a2e" opacity="0.3"/><circle cx="75" cy="75" r="8" fill="%2316213e" opacity="0.2"/><circle cx="75" cy="25" r="3" fill="%230f3460" opacity="0.4"/><circle cx="25" cy="75" r="6" fill="%23e94560" opacity="0.1"/></svg>') repeat;
+  z-index: -2;
+  display: flex;
+  gap: 10px;
+  padding: 20px;
+  overflow: hidden;
+}
+
+/* Background animation container */
+#background-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+/* Background blur mask */
+#background-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -0.5;
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  background: transparent;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+/* Content wrapper */
+.content-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+/* Main title */
+.main-title {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #fff;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
+  animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+  from {
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.6), 0 0 50px rgba(255, 255, 255, 0.3);
+  }
+  to {
+    text-shadow: 0 0 50px rgba(255, 255, 255, 0.8), 0 0 80px rgba(255, 255, 255, 0.6), 0 0 120px rgba(255, 255, 255, 0.4);
+  }
+}
+
+/* Subtitle */
+.subtitle {
+  font-size: 1.2rem;
+  color: #fff;
+  margin-bottom: 60px;
+  line-height: 1.6;
+}
+
+/* Form container */
+.form-container {
+  width: 100%;
+  max-width: 400px;
+  background: rgba(20, 20, 40, 0.4);
+  padding: 40px;
+  border-radius: 15px;
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Input label */
+.input-label {
+  display: block;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  color: #e0e0e0;
+  text-align: left;
+  font-weight: 500;
+}
+
+/* Input wrapper */
+.input-wrapper {
+  margin-bottom: 25px;
+}
+
+/* Input field */
+input[type="text"] {
+  width: 100%;
+  padding: 15px;
+  font-size: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  background: rgba(20, 20, 40, 0.3);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  background: rgba(20, 20, 40, 0.5);
+}
+
+input[type="text"]::placeholder {
+  color: #666;
+}
+
+/* Submit button */
+.submit-btn {
+  width: 100%;
+  padding: 15px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #fff;
+  background: rgba(76, 175, 80, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(67, 160, 71, 0.9);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 25px rgba(76, 175, 80, 0.6);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Loading animation for button */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(76, 175, 80, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+  }
+}
+
+.submit-btn.loading {
+  animation: pulse 1.5s infinite;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 20px;
+  color: #fff;
+  font-size: 0.9rem;
+  margin-top: auto;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 2.5rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+    margin-bottom: 40px;
+    padding: 0 20px;
+  }
+  
+  .form-container {
+    padding: 30px 25px;
+    margin: 0 20px;
+  }
+  
+  .container {
+    padding: 10px;
+  }
+  
+  .content-wrapper {
+    padding: 40px 10px;
+  }
+  
+  input[type="text"] {
+    padding: 16px;
+    font-size: 1.1rem;
+    border-radius: 12px;
+  }
+  
+  .submit-btn {
+    padding: 16px;
+    font-size: 1.2rem;
+    border-radius: 12px;
+  }
+  
+  .input-label {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-title {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+  
+  .form-container {
+    padding: 25px 20px;
+    margin: 0 15px;
+  }
+  
+  .subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+  }
+  
+  input[type="text"] {
+    padding: 14px;
+    font-size: 1rem;
+  }
+  
+  .submit-btn {
+    padding: 14px;
+    font-size: 1.1rem;
+  }
+  
+  .content-wrapper {
+    padding: 30px 10px;
+  }
+}
+
+/* Background image styles */
+.bg-column {
+  flex: 1;
+  overflow: hidden;
+  padding: 0 10px;
+}
+
+.bg-img {
+  width: 100%;
+  height: auto;
+  max-width: 110px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  opacity: 0.8;
+}
+
+/* Responsive background images */
+@media (max-width: 768px) {
+  .bg-img {
+    max-width: 90px;
+  }
+  
+  .bg-column {
+    padding: 0 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bg-img {
+    max-width: 75px;
+  }
+  
+  .bg-column {
+    padding: 0 5px;
+  }
+}
+
+.bg-img:hover {
+  transform: scale(1.05);
+}
+
+/* Background image animations */
+@keyframes scroll-up {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes scroll-down {
+  from {
+    transform: translateY(-50%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Marquee animations */
+@keyframes scroll-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
